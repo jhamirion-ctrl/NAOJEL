@@ -71,3 +71,11 @@ const quotes = [
 document.getElementById("quoteBtn").onclick = function() { const random = Math.floor(Math.random() * quotes.length); document.getElementById("quoteText").textContent = quotes[random]; };
 
 setInterval(() => { alert("Hey, just checking in. How are you feeling?"); }, 6 * 60 * 60 * 1000); // 6 hours
+
+function playMusic() {
+  const audio = document.getElementById("bgMusic");
+  audio.play();
+  // Optional: Hide the button after clicking
+  document.getElementById("musicBtn").style.display = "none";
+}
+
