@@ -91,12 +91,12 @@ setInterval(() => {
     alert("Hey, just checking in. How are you feeling?"); 
 }, 6 * 60 * 60 * 1000);
 
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai@0.1.0";
 
 // 1. Setup API
 const API_KEY = "PASTE_YOUR_KEY_HERE"; // Replace with your real key
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 // 2. AI Logic
 const aiBtn = document.getElementById("aiBtn");
@@ -123,3 +123,4 @@ aiBtn.onclick = async () => {
         aiResponse.textContent = "ZenBot is resting right now. Try again in a minute.";
     }
 };
+
