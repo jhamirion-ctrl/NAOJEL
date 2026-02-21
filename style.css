@@ -1,24 +1,64 @@
+/* Reset default spacing */
 body {
-    text-align: center;
-    font-family: Arial;
-    color: black;
-    background-size: cover;
-    background-position: center;
-    transition: background 1s ease;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #c9e4f6, #f5e6ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
-.theme-lava {
-    background-image: url("lava.gif");
+/* Title styling */
+h1 {
+  margin-top: 60px;
+  font-size: 2.5rem;
+  color: #333;
 }
 
-.theme-ocean {
-    background-image: url("ocean.gif");
+/* Button styling */
+button {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 15px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #4b45c2;
+  transform: scale(1.05);
+}
+
+/* Text under buttons */
+p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 500px;
+  margin: 10px 20px 30px;
+}
+
+/* Optional: subtle card effect */
+button, p {
+  width: 80%;
+  max-width: 400px;
 }
 
 .theme-sunset {
     background-image: url("sunset.gif");
 }
-
-.theme-galaxy {
-    background-image: url("galaxy.gif");
+.container {
+  background: white;
+  padding: 40px;
+  margin-top: 80px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
+
