@@ -68,5 +68,6 @@ const quotes = [
     "You have got this — one step at a time.",
     "Be proud of how far you have come, even if you are not where you want to be yet."
 ];
+document.getElementById("quoteBtn").onclick = function() { const random = Math.floor(Math.random() * quotes.length); document.getElementById("quoteText").textContent = quotes[random]; };
 
 setInterval(() => { alert("Hey, just checking in. How are you feeling?"); }, 6 * 60 * 60 * 1000); // 6 hours
