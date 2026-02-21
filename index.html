@@ -9,7 +9,7 @@
 <body>
 
   <div class="container">
-    <h1>Welcome to your Calm Space</h1>
+    <h1>CALM SPACE</h1>
     
     <div class="theme-selector">
         <label for="themes">Choose your vibe:</label>
@@ -38,6 +38,14 @@
         <audio id="bgMusic" src="snowfall.mp3" loop></audio>
         <button id="musicBtn" onclick="toggleMusic()">🎵 Enable Ambient Sound</button>
     </div>
+    <hr>
+<div class="ai-section">
+    <h3>Talk to CalmBot</h3>
+    <textarea id="userInput" placeholder="I'm feeling overwhelmed because..."></textarea>
+    <button id="aiBtn">Get Support</button>
+    <p id="aiResponse" style="font-style: italic; font-size: 0.9rem;"></p>
+</div>
+
   </div>
 
   <script src="script.js"></script>
