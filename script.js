@@ -1,3 +1,37 @@
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai@0.1.0";
+
+// 1. Setup API
+const API_KEY = "PASTE_APIKEY_HERE"; // Replace with your real key
+const genAI = new GoogleGenerativeAI(API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+// 2. AI Logic
+const aiBtn = document.getElementById("aiBtn");
+const userInput = document.getElementById("userInput");
+const aiResponse = document.getElementById("aiResponse");
+
+aiBtn.onclick = async () => {
+    const text = userInput.value;
+    if (!text) return alert("Tell CalmBot how you feel first!");
+
+    aiResponse.textContent = "CalmBot is thinking...";
+    
+    try {
+        // System instructions to keep it "Calm"
+        const prompt = `You are a mental health assistant for students. 
+        The student says: "${text}". 
+        Give a warm, 2-sentence empathetic response and one very small, actionable self-care tip.
+        if requested, include contact information of a mental health professional from prairie view a&m university.`;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        aiResponse.textContent = response.text();
+    } catch (error) {
+        console.error(error);
+        aiResponse.textContent = "CalmBot is resting right now. Try again in a minute.";
+    }
+};
+
 // Data arrays from original project
 const soloActivities = [
     "Step outside for 5 minutes of fresh air",
@@ -86,41 +120,10 @@ function toggleMusic() {
     }
 }
 
+musicBtn.addEventListener("click", toggleMusic);
+
 // Check-in Alert
 setInterval(() => { 
     alert("Hey, just checking in. How are you feeling?"); 
 }, 6 * 60 * 60 * 1000);
-
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai@0.1.0";
-
-// 1. Setup API
-const API_KEY = "PASTE_YOUR_KEY_HERE"; // Replace with your real key
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-
-// 2. AI Logic
-const aiBtn = document.getElementById("aiBtn");
-const userInput = document.getElementById("userInput");
-const aiResponse = document.getElementById("aiResponse");
-
-aiBtn.onclick = async () => {
-    const text = userInput.value;
-    if (!text) return alert("Tell ZenBot how you feel first!");
-
-    aiResponse.textContent = "ZenBot is thinking...";
-    
-    try {
-        // System instructions to keep it "Zen"
-        const prompt = `You are a mental health assistant for students. 
-        The student says: "${text}". 
-        Give a warm, 2-sentence empathetic response and one very small, actionable self-care tip.`;
-
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        aiResponse.textContent = response.text();
-    } catch (error) {
-        console.error(error);
-        aiResponse.textContent = "ZenBot is resting right now. Try again in a minute.";
-    }
-};
 
