@@ -1,3 +1,4 @@
+// Data arrays from original project
 const soloActivities = [
     "Step outside for 5 minutes of fresh air",
     "Do a 2 minute deep breathing exercise",
@@ -5,7 +6,7 @@ const soloActivities = [
     "Stretch your whole body for 3 minutes",
     "Listen to one calming song with eyes closed",
     "Do 10 jumping jacks or a quick shake out",
-    "Try a 5 minute yoga flow (YouTube or memory)",
+    "Try a 5 minute yoga flow",
     "Sit in the sun for a few minutes",
     "Do a slow body scan to release tension",
     "Doodle or sketch whatever comes to mind",
@@ -14,11 +15,6 @@ const soloActivities = [
     "Hum or sing quietly to release tension",
     "Rearrange or tidy a small part of your space"
 ];
-
-document.getElementById("soloBtn").onclick = function() {
-    const random = Math.floor(Math.random() * soloActivities.length);
-    document.getElementById("soloText").textContent = soloActivities[random];
-};
 
 const groupActivities = [
     "Take a short walk together",
@@ -29,18 +25,13 @@ const groupActivities = [
     "Do a 5 minute group stretch",
     "Watch a funny short video together",
     "Have a 1 song dance break",
-    "Try a 60 second drawing challenge (Skribbl.io)",
+    "Try a 60 second drawing challenge",
     "Give each other one sincere compliment",
-    "Do a 'rose, thorn, bud' check in (good, challenge, something to look forward to)",
+    "Do a 'rose, thorn, bud' check in",
     "Take a group photo walk",
     "Sit in a common area and people watch",
     "Do a 3 minute 'collective silence' reset"
 ];
-
-document.getElementById("groupBtn").onclick = function() {
-    const random = Math.floor(Math.random() * groupActivities.length);
-    document.getElementById("groupText").textContent = groupActivities[random];
-};
 
 const quotes = [
     "You are doing better than you think.",
@@ -49,33 +40,53 @@ const quotes = [
     "Progress is progress, no matter how small.",
     "You deserve rest, kindness, and patience with yourself.",
     "One tough day does not define your whole journey.",
-    "You are learning, growing, and becoming stronger every day.",
     "It is okay to pause — recharging is part of the process.",
-    "You do not need to be perfect to make progress.",
-    "Your effort matters, even when the results aren’t visible yet.",
-    "You are capable of more than you realize.",
-    "Take a breath — you are allowed to slow down.",
-    "You have overcome 100% of your hardest days so far.",
-    "Your future self will thank you for not giving up.",
-    "You are not behind — you are on your own timeline.",
-    "Asking for help is a sign of strength, not weakness.",
-    "You are allowed to rest without earning it.",
-    "You are doing your best, and that is enough.",
-    "Every challenge you face is shaping you into someone stronger.",
-    "You are not alone — many students feel the same way.",
-    "Your mental health matters more than any assignment.",
-    "You are allowed to take breaks without feeling guilty.",
-    "You have got this — one step at a time.",
-    "Be proud of how far you have come, even if you are not where you want to be yet."
+    "Your mental health matters more than any assignment."
 ];
-document.getElementById("quoteBtn").onclick = function() { const random = Math.floor(Math.random() * quotes.length); document.getElementById("quoteText").textContent = quotes[random]; };
 
-setInterval(() => { alert("Hey, just checking in. How are you feeling?"); }, 6 * 60 * 60 * 1000); // 6 hours
+// --- Logic Implementation ---
 
-function playMusic() {
-  const audio = document.getElementById("bgMusic");
-  audio.play();
-  // Optional: Hide the button after clicking
-  document.getElementById("musicBtn").style.display = "none";
+// Random Content Logic
+function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
+document.getElementById("soloBtn").onclick = () => {
+    document.getElementById("soloText").textContent = getRandom(soloActivities);
+};
+
+document.getElementById("groupBtn").onclick = () => {
+    document.getElementById("groupText").textContent = getRandom(groupActivities);
+};
+
+document.getElementById("quoteBtn").onclick = () => {
+    document.getElementById("quoteText").textContent = getRandom(quotes);
+};
+
+// Theme Switcher Logic
+const themeSelect = document.getElementById("themeSelect");
+themeSelect.addEventListener("change", (e) => {
+    document.body.style.backgroundImage = `url('${e.target.value}')`;
+});
+
+// Improved Audio Logic
+let isPlaying = false;
+const audio = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+function toggleMusic() {
+    if (!isPlaying) {
+        audio.play();
+        musicBtn.textContent = "🔇 Mute Sound";
+        isPlaying = true;
+    } else {
+        audio.pause();
+        musicBtn.textContent = "🎵 Enable Ambient Sound";
+        isPlaying = false;
+    }
+}
+
+// Check-in Alert
+setInterval(() => { 
+    alert("Hey, just checking in. How are you feeling?"); 
+}, 6 * 60 * 60 * 1000);
