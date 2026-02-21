@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>NAOJEL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAOJEL | Your Calm Space</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
   <div class="container">
-    <h1>Welcome to Your Calm Space</h1>
+    <h1>Welcome to your Calm Space</h1>
+    
+    <div class="theme-selector">
+        <label for="themes">Choose your vibe:</label>
+        <select id="themeSelect">
+            <option value="sunset.gif">Tropical Sunset</option>
+            <option value="ocean.gif">Calm Ocean</option>
+            <option value="galaxy.gif">Deep Space</option>
+            <option value="lava.gif">Lava Lamp</option>
+        </select>
+    </div>
 
-    <audio id="music" src="chill.mp3.mp3" autoplay loop></audio>
+    <hr>
 
-    <button id="soloBtn">Solo Activity</button>
-    <p id="soloText"></p>
+    <div class="activity-section">
+        <button id="soloBtn">Solo Activity</button>
+        <p id="soloText">Click for a quick reset...</p>
 
-    <button id="groupBtn">Group Activity</button>
-    <p id="groupText"></p>
+        <button id="groupBtn">Group Activity</button>
+        <p id="groupText">Something to do together...</p>
 
-    <button id="quoteBtn">Motivate me</button>
-    <p id="quoteText"></p>
-         <audio id="bgMusic" src="snowfall.mp3" loop></audio>
-<button onclick="playMusic()" id="musicBtn">Enable Sound</button>
+        <button id="quoteBtn">Motivate Me</button>
+        <p id="quoteText">Things to Motivate...</p>
+    </div>
+
+    <div class="audio-controls">
+        <audio id="bgMusic" src="snowfall.mp3" loop></audio>
+        <button id="musicBtn" onclick="toggleMusic()">🎵 Enable Ambient Sound</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
-  
-
-
 </body>
 </html>
-</html>
-
-
-
